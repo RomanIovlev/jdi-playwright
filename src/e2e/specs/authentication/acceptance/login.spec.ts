@@ -3,7 +3,7 @@ import { Default } from '../../../data/default-data';
 import { expect } from '@playwright/test';
 
 test.describe('@JIRA-1234: Login and submit user data', () => {
-  test.skip('Login test', async ({ loginPage, menu, contactFormPage, visual }) => {
+  test('Login test', async ({ loginPage, menu, contactFormPage, visual }) => {
     await loginPage.login();
     await visual.step('Open "Contact form" using left navigation menu', async () => {
       await menu.select('Contact form');
