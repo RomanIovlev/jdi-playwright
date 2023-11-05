@@ -1,0 +1,15 @@
+node_modules/
+test-results/
+playwright-report/
+.idea/
+allure-results/
+allure-report/
+test-output/
+dist
+.DS_Store
+*.txt
+*.png
+.vscode/
+package-lock.json
+yarn.lock
+yarn-error.log
