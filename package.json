@@ -20,14 +20,6 @@
     "prettier": "^3.0.3",
     "tslib": "^2.6.2"
   },
-  "lint-staged": {
-    "**/*": [
-      "npm run lint -- --fix"
-    ],
-    "**/*.{js,jsx,ts,tsx}": [
-      "npm run format"
-    ]
-  },
   "scripts": {
     "postinstall": "npx playwright install",
     "lint": "./node_modules/.bin/eslint src/e2e/**/*.ts --format codeframe",
