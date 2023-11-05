@@ -1,4 +1,4 @@
-import { test as baseTest } from '@playwright/test';
+import { expect, test as baseTest } from '@playwright/test';
 import { LoginPage } from './pages/login-page';
 import { VisualValidator } from '../utils/visual-validator';
 import 'dotenv/config';
@@ -6,6 +6,8 @@ import { VisualTestLevel } from '../utils/visual-test-level';
 import * as process from 'process';
 import { Menu } from './ui-components/menu';
 import { ContactFormPage } from './pages/contact-form-page';
+import { UsersTablePage } from './pages/users-table-page';
+import { Default } from '../data/default-data';
 
 const getVisualLevel = (): VisualTestLevel => {
   if (!process.env.VISUAL_TESTING) return VisualTestLevel.OFF;
@@ -27,6 +29,8 @@ export const test = baseTest.extend<{
   loginPage: LoginPage;
   menu: Menu;
   contactFormPage: ContactFormPage;
+  usersTablePage: UsersTablePage;
+  onUsersTablePage: void;
 }>({
   rtl: [false, { option: true }],
   visual: async ({ page, rtl }, use) => {
@@ -41,6 +45,16 @@ export const test = baseTest.extend<{
   contactFormPage: async ({ page, visual }, use) => {
     await use(new ContactFormPage(page, visual, '/contacts.html'));
   },
+  usersTablePage: async ({ page, visual }, use) => {
+    await use(new UsersTablePage(page, visual, '/user-table.html'));
+  },
+  onUsersTablePage: async ({ loginPage, menu, usersTablePage, visual }) => {
+    await loginPage.login();
+    await visual.step('Open "User Table form" using left navigation menu', async () => {
+      await menu.openSelect('Service', 'User Table');
+    });
+    await usersTablePage.toValidatePage();
+  }
 });
 
 test.use({

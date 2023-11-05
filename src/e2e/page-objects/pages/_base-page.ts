@@ -1,4 +1,4 @@
-import { test, expect, Locator, Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 import { isLocator } from '../../utils/playwright-utils';
 import { BaseComponent, isComponent } from '../ui-components/_base-component';
 import { VisualValidator } from '../../utils/visual-validator';

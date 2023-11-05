@@ -1,7 +1,7 @@
 import { BaseJDIPage } from './_base-jdi-page';
 import { ContactData } from '../../data-types/contact-data';
 import { Default } from '../../data/default-data';
-import { expect, Locator, test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { Input } from '../ui-components/input';
 
 export class ContactFormPage extends BaseJDIPage {
