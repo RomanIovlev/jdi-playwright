@@ -1,0 +1,54 @@
+{
+  "name": "playwright-jdi-tests",
+  "version": "1.0.0",
+  "description": "JDI Playwright test project",
+  "keywords": [],
+  "author": "Roman Iovlev <roman.iovlev.jdi@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.48.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-formatter-codeframe": "^7.32.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsdoc": "^46.5.1",
+    "eslint-plugin-no-null": "^1.0.2",
+    "eslint-plugin-no-only-tests": "^3.1.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "tslib": "^2.6.2"
+  },
+  "lint-staged": {
+    "**/*": [
+      "npm run lint -- --fix"
+    ],
+    "**/*.{js,jsx,ts,tsx}": [
+      "npm run format"
+    ]
+  },
+  "scripts": {
+    "postinstall": "npx playwright install",
+    "lint": "./node_modules/.bin/eslint src/e2e/**/*.ts --format codeframe",
+    "lint-fix": "npm run lint -- --fix && npm run format && --forbid",
+    "format": "prettier --write \"{src,e2e}/**/*.{ts,md,html}\" \"!{src,e2e}/**/coverage\" ",
+    "format:check": "prettier --list-different \"{apps,libs}/**/*.{ts,md}\" \"!{apps,libs}/**/coverage\"",
+    "test": "npx playwright test --workers=8",
+    "test:success": "npx playwright test --grep-invert @failed --workers=8",
+    "test-all": "npx playwright test --workers=8",
+    "tests": "npm run test",
+    "clean:test": "npm run clean && npm run test",
+    "test:debug": "npx playwright test --headed --workers=8",
+    "report": "allure generate allure-results --clean && allure open",
+    "clean": "rm -rf allure-report && rm -rf allure-results && rm -rf playwright-report && rm -rf test-output",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.37.1",
+    "allure-playwright": "^2.7.0",
+    "dotenv": "^16.3.1",
+    "uuid": "^9.0.1",
+    "allure-commandline": "^2.24.1"
+  }
+}

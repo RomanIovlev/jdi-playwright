@@ -1,0 +1,5 @@
+/.build
+/node_modules
+/output
+package*.json
+Jenkinsfile
