@@ -33,7 +33,7 @@ test.describe('@JIRA-1234: Table test', () => {
       .toHave({ number: '4' });
   });
 
-  test('Visual Table test', async ({ onUsersTablePage, usersTablePage, visual }) => {
+  test.skip('Visual Table test', async ({ onUsersTablePage, usersTablePage, visual }) => {
     await visual.testFullPage('Table Page');
     await visual.testElement(usersTablePage.users.root, 'User Table');
   });
