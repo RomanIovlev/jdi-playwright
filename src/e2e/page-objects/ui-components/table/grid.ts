@@ -24,6 +24,15 @@ export class Grid extends BaseComponent {
     return new DefaultRow(this.rows.nth(index), this);
   }
 
+  async setLabels(): Promise<Grid> {
+    this.labels = [];
+    const count = await this.headers.count();
+    for (let i = 0; i < count; i++) {
+      this.labels.push(await this.headers.nth(i).innerText());
+    }
+    return this;
+  }
+
   async findRows(search: (row: string[]) => Promise<boolean>): Promise<DefaultRow[]> {
     await this.rows.first().waitFor();
     const result: DefaultRow[] = [];
