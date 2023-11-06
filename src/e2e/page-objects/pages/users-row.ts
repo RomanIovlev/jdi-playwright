@@ -1,8 +1,8 @@
 import { BaseRow } from '../ui-components/table/base-classes/_base-row';
-import { UserData } from '../../data/users-row';
+import { UserRow } from '../../data/users-row';
 import { Description } from './description';
 
-export class UsersRow extends BaseRow<UserData> {
+export class UsersRow extends BaseRow<UserRow> {
   number = this.$('td').nth(0);
   type = this.$('td').nth(1).locator('select');
   user = this.$('td').nth(2);

@@ -31,7 +31,8 @@
     "test-all": "npx playwright test --workers=8",
     "tests": "npm run test",
     "clean:test": "npm run clean && npm run test",
-    "test:debug": "npx playwright test --headed --workers=8 --debug",
+    "test:headed": "npx playwright test --headed --workers=8",
+    "test:debug": "npx playwright test --debug --workers=8",
     "report": "allure generate allure-results --clean && allure open",
     "clean": "rm -rf allure-report && rm -rf allure-results && rm -rf playwright-report && rm -rf test-output",
     "prepare": "husky install"
