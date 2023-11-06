@@ -3,7 +3,7 @@ import { Default } from '../../../data/default-data';
 import { expect } from '@playwright/test';
 
 test.describe('@JIRA-1234: Login and submit user data', () => {
-  test('@acceptance @long Resend OTP', async ({ loginPage, menu, contactFormPage, visual }) => {
+  test('Login test', async ({ loginPage, menu, contactFormPage, visual }) => {
     await loginPage.login();
     await visual.step('Open "Contact form" using left navigation menu', async () => {
       await menu.select('Contact form');
@@ -30,4 +30,6 @@ test.describe('@JIRA-1234: Login and submit user data', () => {
     });
     await expect(contactFormPage.logs).toContainText('Summary: 3First Name: RomanLast Name: IovlevVegetables:');
   });
+
+
 });
